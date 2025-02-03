@@ -109,6 +109,19 @@ public class Main {
         // Display the result
         System.out.printf("\n%.2f feet is equal to %.4f miles.%n", feet, miles);
 
+        // Q9 Interest Calculation
+        final double INTEREST_RATE = 0.01; // 1% interest rate
+
+        // Ask the user for the deposit amount
+        System.out.print("Enter the deposit amount: ");
+        double deposit = scanner.nextDouble();
+
+        // Calculate interest and total amount
+        double interest = deposit * INTEREST_RATE;
+        double totalAmount = deposit + interest;
+
+        // Display the result
+        System.out.printf("\nWith a deposit of %.2f, you will earn %.2f in interest. Total amount after one year: %.2f%n", deposit, interest, totalAmount);
 
         scanner.close(); // Close the scanner to free underlying resources (Good practice)
     }
