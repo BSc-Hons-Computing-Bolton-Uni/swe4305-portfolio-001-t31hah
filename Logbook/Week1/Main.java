@@ -1,6 +1,7 @@
 package Logbook.Week1;
 
 import java.util.Scanner; // Import Scanner to take user input
+import java.time.Year; // Import Year to get the current year
 
 public class Main {
     public static void main(String[] args) {
@@ -54,6 +55,61 @@ public class Main {
         System.out.printf("\nThe average of %.2f and %.2f is: %.2f%n",
                 number1, number2, average);
 
-        scanner.close(); // Close the scanner (Good practice)
+        // Declare variables for the two numbers
+        int firstNumber, secondNumber;
+
+        // Get first number
+        System.out.print("Enter the first number: ");
+        firstNumber = scanner.nextInt();
+
+        // Get second number
+        System.out.print("Enter the second number: ");
+        secondNumber = scanner.nextInt();
+
+        // Display original order
+        System.out.println("\nOriginal Order:");
+        System.out.println("First number: " + firstNumber);
+        System.out.println("Second number: " + secondNumber);
+
+        // Display reversed order
+        System.out.println("\nReversed Order:");
+        System.out.println("First number: " + secondNumber);
+        System.out.println("Second number: " + firstNumber);
+
+        //Q6 Birthday
+        // Get the current year
+        int currentYear = Year.now().getValue();
+
+        // Allow the user to type in their age, calculate, and output their estimated birth year.
+        // Declare variable for age
+        int age;
+
+        // Get age from user
+        System.out.print("Please enter your age: ");
+        age = scanner.nextInt();
+
+        // Calculate birth year
+        int birthYear = currentYear - age;
+
+        // Display result
+        System.out.println("\nBased on your age of " + age + ":");
+        System.out.println("You were most likely born in " + birthYear);
+        System.out.println("(Note: This is estimately depending on whether you've had your birthday this year)");
+
+        // Q8 Conversion from feet to miles
+        final int FEET_PER_MILE = 5280; // Define feet per mile as a constant
+
+        // Ask the user for the number of feet
+        System.out.print("Enter the number of feet: ");
+        double feet = scanner.nextDouble();
+
+        // Convert feet to miles
+        double miles = feet / FEET_PER_MILE;
+
+        // Display the result
+        System.out.printf("\n%.2f feet is equal to %.4f miles.%n", feet, miles);
+
+
+        scanner.close(); // Close the scanner to free underlying resources (Good practice)
     }
 }
