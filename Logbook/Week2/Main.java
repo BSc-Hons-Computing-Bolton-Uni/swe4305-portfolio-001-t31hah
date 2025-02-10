@@ -29,39 +29,46 @@ class AgeCalculator {
 
         //Write a program that enables a student to enter a letter grade (A, B, C, D, E or F), then convert that to auniversity undergraduate classification (1st, 2:1, 2:2, 3rd, ordinary, fail).
         // Prompt user for input
-        System.out.print("Enter your letter grade (A, B, C, D, E or F): ");
-        String grade = scanner.nextLine().toUpperCase(); // Convert input to uppercase
+        System.out.print("Enter your letter grade (A, B, C, D, E, F): ");
+        char grade = scanner.next().toUpperCase().charAt(0);
 
-        // Convert grade to classification
-        String classification;
+        String classification = switch (grade) {
+            case 'A' -> "1st";
+            case 'B' -> "2:1";
+            case 'C' -> "2:2";
+            case 'D' -> "3rd";
+            case 'E' -> "Ordinary";
+            case 'F' -> "Fail";
+            default -> "Invalid grade entered";
+        };
 
-        switch (grade) {
-            case "A":
-                classification = "1st (First Class Honours)";
-                break;
-            case "B":
-                classification = "2:1 (Upper Second Class Honours)";
-                break;
-            case "C":
-                classification = "2:2 (Lower Second Class Honours)";
-                break;
-            case "D":
-                classification = "3rd (Third Class Honours)";
-                break;
-            case "E":
-                classification = "Ordinary Degree (Pass)";
-                break;
-            case "F":
-                classification = "Fail";
-                break;
-            default:
-                classification = "Invalid grade entered";
-                break;
+        System.out.println("Your classification: " + classification);
+        scanner.close();
+
+        // Q3 Output the digits between the range of 0 to 9 using a loop.
+        System.out.println("Using a for loop:");
+        for (int i = 0; i <= 9; i++) {
+            System.out.print(i + " "); // Print each digit followed by a space
         }
+        System.out.println(); // Add a newline at the end
 
-        // Display result
-        System.out.println("Your degree classification is: " + classification);
+        // Using a while loop (alternative)
+        System.out.println("\nUsing a while loop:");
+        int j = 0;
+        while (j <= 9) {
+            System.out.print(j + " ");
+            j++;
+        }
+        System.out.println();
 
+        // Using a do-while loop (less common for this specific case)
+        System.out.println("\nUsing a do-while loop:");
+        int k = 0;
+        do {
+            System.out.print(k + " ");
+            k++;
+        } while (k <= 9);
+        System.out.println();
 
         // Close the scanner
         scanner.close();
