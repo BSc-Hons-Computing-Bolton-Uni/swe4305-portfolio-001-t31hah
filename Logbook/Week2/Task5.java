@@ -1,8 +1,7 @@
 package Logbook.Week2;
 
 import java.util.Scanner;
-
-public class MultiplicationTable {
+public class Task5 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in); // Initialize scanner
 
@@ -19,3 +18,6 @@ public class MultiplicationTable {
         } else {
             System.out.println("Invalid input. Please enter a valid number.");
         }
+        scanner.close(); // Close the scanner only at the end
+    }
+}
