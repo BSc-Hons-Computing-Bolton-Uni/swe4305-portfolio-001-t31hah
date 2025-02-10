@@ -70,6 +70,24 @@ class AgeCalculator {
         } while (k <= 9);
         System.out.println();
 
+        // Q4
+        // Print the seven times multiplication table
+        System.out.println("Seven times multiplication table:");
+        for (int i = 1; i <= 12; i++) {
+            System.out.println(i + " x 7 = " + (i * 7));
+        }
+
+        // Ask user for the multiplication table they want to see
+        System.out.print("Enter a number to see its multiplication table: ");
+        int number;
+        number = scanner.nextInt();
+
+        // Print the chosen multiplication table
+        System.out.println("Multiplication table for " + number + ":");
+        for (int i = 1; i <= 12; i++) {
+            System.out.println(i + " x " + number + " = " + (i * number));
+        }
+
         // Close the scanner
         scanner.close();
     }
