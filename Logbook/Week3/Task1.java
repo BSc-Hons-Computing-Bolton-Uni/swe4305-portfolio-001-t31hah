@@ -1,6 +1,6 @@
 package Logbook.Week3;
 
-public class week1 {
+public class Task1 {
 
     public static class Student { // Make Student static
         private int id;
