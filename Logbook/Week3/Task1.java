@@ -28,7 +28,7 @@ public class Task1 {
             this.name = name;
         }
 
-        // toString method for easy printing
+        // toS tring method for easy printing
         @Override
         public String toString() {
             return "Student [id=" + id + ", name=" + name + "]";
