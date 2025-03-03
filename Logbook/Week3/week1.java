@@ -1,17 +1,16 @@
 package Logbook.Week3;
 
 public class week1 {
-    public class Student {
+
+    public static class Student { // Make Student static
         private int id;
         private String name;
 
-        // Constructor
         public Student(int id, String name) {
             this.id = id;
             this.name = name;
         }
 
-        // Getters and setters
         public int getId() {
             return id;
         }
@@ -28,10 +27,17 @@ public class week1 {
             this.name = name;
         }
 
-        // toString method for easy printing
         @Override
         public String toString() {
             return "Student [id=" + id + ", name=" + name + "]";
         }
+    }
+
+    public static void main(String[] args) {
+        Student student1 = new Student(1, "Alice");
+        Student student2 = new Student(2, "Bob");
+
+        System.out.println(student1);
+        System.out.println(student2);
     }
 }
