@@ -1,6 +1,6 @@
 package Logbook.Week3;
 
-public class Task1 {
+public class week1 {
     public class Student {
         private int id;
         private String name;
@@ -28,7 +28,7 @@ public class Task1 {
             this.name = name;
         }
 
-        // toS tring method for easy printing
+        // toString method for easy printing
         @Override
         public String toString() {
             return "Student [id=" + id + ", name=" + name + "]";
