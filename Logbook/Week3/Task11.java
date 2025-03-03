@@ -120,7 +120,7 @@ public class Task11 {
         }
     }
 
-    public static class Task11 {
+    public static class Task1 {
 
         public static class Student {
             private int id;
