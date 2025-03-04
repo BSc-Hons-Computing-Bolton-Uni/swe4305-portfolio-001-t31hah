@@ -2,18 +2,25 @@ package Logbook.Week4;
 
 import java.util.ArrayList;
 
-public class Task4 {
+public class Task6 {
 
     public static class Student {
         private int id;
         private String name;
         private Course course;
-        private int[] marks; // Added integer array for marks
+        private int[] marks;
 
-        public Student(int id, String name) {
+        public Student(int id, String name, Course course) {
             this.id = id;
             this.name = name;
-            this.marks = new int[4]; // Initialize the marks array with size 4
+            this.course = course;
+            this.marks = new int[4];
+
+            if (course != null) {
+                for (int i = 0; i < 4; i++) {
+                    this.marks[i] = (int) (Math.random() * 101);
+                }
+            }
         }
 
         public int getId() {
@@ -64,13 +71,15 @@ public class Task4 {
             System.out.println("Student ID: " + id + ", Name: " + name);
             if (course != null) {
                 System.out.println("Enrolled in:");
-                course.print();
+                System.out.println("Course Code: " + course.getCode() + ", Course Name: " + course.getName());
+                System.out.println("Modules and Marks:");
+                ArrayList<Module> modules = course.getModules();
+                for (int i = 0; i < modules.size(); i++) {
+                    Module module = modules.get(i);
+                    System.out.println("  Module Code: " + module.getCode() + ", Module Name: " + module.getName() + ", Mark: " + marks[i]);
+                }
             } else {
                 System.out.println("Not enrolled in any course.");
-            }
-            System.out.println("Marks:");
-            for (int mark : marks) {
-                System.out.println("  " + mark);
             }
         }
 
@@ -110,6 +119,10 @@ public class Task4 {
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        public ArrayList<Module> getModules() {
+            return modules;
         }
 
         public void print() {
@@ -166,16 +179,7 @@ public class Task4 {
         Course myActualCourse = new Course("COMP101", "Introduction to Computer Science");
 
         // Student object
-        Student myStudent = new Student(87654321, "TestName");
-
-        // Test: Call enrol method
-        myStudent.enrol(myActualCourse);
-
-        //set marks
-        myStudent.setMark(0, 85);
-        myStudent.setMark(1, 92);
-        myStudent.setMark(2, 78);
-        myStudent.setMark(3, 95);
+        Student myStudent = new Student(87654321, "TestName", myActualCourse);
 
         // Verify enrollment
         System.out.println("Testing Course Enrollment:");
@@ -190,7 +194,7 @@ public class Task4 {
         System.out.println("\nTesting Course:");
         myActualCourse.print();
 
-        Student studentWithoutCourse = new Student(100162245, "NoCourseStudent");
+        Student studentWithoutCourse = new Student(11111111, "NoCourseStudent", null);
         System.out.println("\nTesting Student with no course:");
         studentWithoutCourse.print();
 

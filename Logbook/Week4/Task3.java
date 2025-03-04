@@ -162,7 +162,7 @@ public class Task3 {
         System.out.println("\nTesting Course:");
         myActualCourse.print();
 
-        Student studentWithoutCourse = new Student(11111111, "NoCourseStudent");
+        Student studentWithoutCourse = new Student(100162245, "NoCourseStudent");
         System.out.println("\nTesting Student with no course:");
         studentWithoutCourse.print();
 
