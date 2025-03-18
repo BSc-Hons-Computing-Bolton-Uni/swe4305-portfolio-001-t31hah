@@ -1,116 +1,135 @@
 package Logbook.Week5;
 
-public class Task1 {
+import java.util.ArrayList;
 
-    // Product.java (within Logbook.Week5 package)
-    public static class Product {
-        private final String productId;
-        private final String name;
-        private final double price;
-        private int quantity;
+// Product Class
+class Product {
+    private final int id;
+    private final String name;
+    private final int quantity;
 
-        public Product(String productId, String name, double price, int quantity) {
-            this.productId = productId;
-            this.name = name;
-            this.price = price;
-            this.quantity = quantity;
-        }
+    // Constructor
+    public Product(int id, String name, int quantity) {
+        this.id = id;
+        this.name = name;
+        this.quantity = quantity;
+    }
 
-        public String getProductId() {
-            return productId;
-        }
+    // Getters
+    public int getId() {
+        return id;
+    }
 
-        public String getName() {
-            return name;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public int getQuantity() {
-            return quantity;
-        }
+    // Print product details
+    public void printProduct() {
+        System.out.println("ID: " + id + ", Name: " + name + ", Quantity: " + quantity);
+    }
+}
 
-        public void setQuantity(int quantity) {
-            this.quantity = quantity;
-        }
+// StockList Class
+class StockList {
+    private final ArrayList<Product> products;
 
-        @Override
-        public String toString() {
-            return "Product{" +
-                    "productId='" + productId + '\'' +
-                    ", name='" + name + '\'' +
-                    ", price=" + price +
-                    ", quantity=" + quantity +
-                    '}';
+    // Constructor to initialize the product list
+    public StockList() {
+        products = new ArrayList<>();
+    }
+
+    // Add a product to the stock list
+    public void addProduct(Product product) {
+        products.add(product);
+        System.out.println(product.getName() + " added to stock.");
+    }
+
+    // Remove a product by ID
+    public void removeProduct(int id) {
+        Product productToRemove = findProduct(id);
+        if (productToRemove != null) {
+            products.remove(productToRemove);
+            System.out.println(productToRemove.getName() + " removed from stock.");
+        } else {
+            System.out.println("Product not found.");
         }
     }
 
-    // StockList.java (within Logbook.Week5 package)
-    public static class StockList {
-        private final java.util.HashMap<String, Product> stock;
-
-        public StockList() {
-            this.stock = new java.util.HashMap<>();
-        }
-
-        public void addStock(Product product) {
-            if (product != null) {
-                String productId = product.getProductId();
-                if (stock.containsKey(productId)) {
-                    Product existingProduct = stock.get(productId);
-                    existingProduct.setQuantity(existingProduct.getQuantity() + product.getQuantity());
-                } else {
-                    stock.put(productId, product);
-                }
+    // Find a product by ID
+    public Product findProduct(int id) {
+        for (Product product : products) {
+            if (product.getId() == id) {
+                return product;
             }
         }
+        return null;
+    }
 
-        public Product getProduct(String productId) {
-            return stock.get(productId);
+    // Print all products
+    public void printStock() {
+        System.out.println("\nStock List:");
+        for (Product product : products) {
+            product.printProduct();
         }
+    }
+}
 
-        public void sellStock(String productId, int quantity) {
-            Product product = stock.get(productId);
-            if (product != null && product.getQuantity() >= quantity) {
-                product.setQuantity(product.getQuantity() - quantity);
-            } else {
-                System.out.println("Insufficient stock for product: " + productId);
-            }
-        }
+// StockDemo Class
+class StockDemo {
+    private final StockList stockList;
 
-        public void printStock() {
-            System.out.println("Stock List:");
-            for (Product product : stock.values()) {
-                System.out.println(product);
-            }
+    // Constructor to initialize StockList
+    public StockDemo() {
+        stockList = new StockList();
+    }
+
+    // Test: Adding products
+    public void testAddProducts() {
+        Product p1 = new Product(101, "Laptop", 5);
+        Product p2 = new Product(102, "Smartphone", 10);
+        Product p3 = new Product(103, "Headphones", 15);
+
+        stockList.addProduct(p1);
+        stockList.addProduct(p2);
+        stockList.addProduct(p3);
+    }
+
+    // Test: Removing a product
+    public void testRemoveProduct() {
+        stockList.removeProduct(102); // Remove the smartphone
+    }
+
+    // Test: Printing all stock
+    public void testPrintStock() {
+        stockList.printStock();
+    }
+
+    // Test: Finding a product
+    public void testFindProduct() {
+        Product found = stockList.findProduct(101);
+        if (found != null) {
+            System.out.println("\nProduct Found: ");
+            found.printProduct();
+        } else {
+            System.out.println("Product not found.");
         }
     }
 
-    // StockDemo.java (within Logbook.Week5 package)
-    public static class StockDemo {
-        public static void main(String[] args) { // Corrected main method signature
-            StockList stockList = new StockList();
+    // Run all tests
+    public void run() {
+        testAddProducts();
+        testPrintStock();
+        testFindProduct();
+        testRemoveProduct();
+        testPrintStock();
+    }
+}
 
-            Product product1 = new Product("P001", "Laptop", 1200.0, 10);
-            Product product2 = new Product("P002", "Mouse", 25.0, 50);
-            Product product3 = new Product("P001", "Laptop", 1200.0, 5); // Add more of product1
-
-            stockList.addStock(product1);
-            stockList.addStock(product2);
-            stockList.addStock(product3);
-
-            stockList.printStock();
-
-            stockList.sellStock("P002", 20);
-            stockList.sellStock("P001", 12);
-            stockList.sellStock("P003", 1); //non existent product
-
-            stockList.printStock();
-
-            Product retrievedProduct = stockList.getProduct("P001");
-            if(retrievedProduct != null){
-                System.out.println("Retrieved product: " + retrievedProduct);
-            } else {
-                System.out.println("Product not found");
-            }
-        }
+// Main Class to run the program
+class Main {
+    public static void main(String[] args) {
+        StockDemo demo = new StockDemo();
+        demo.run();
     }
 }
