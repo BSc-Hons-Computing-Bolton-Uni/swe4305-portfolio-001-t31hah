@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Music {  // Changed from "music" to "Music" (capitalized)
+public class Music {  // Changed from "music" to "Music" (capitalised)
     // The song class represents a single song in the music streaming application
     static class Song {
         private final String title;  // Title of the song
@@ -21,11 +21,6 @@ public class Music {  // Changed from "music" to "Music" (capitalized)
         // Getter for song title
         public String getTitle() {
             return title;
-        }
-
-        // Getter for artist
-        public String getArtist() {
-            return artist;
         }
 
         // Getter for play count of the song
