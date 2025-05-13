@@ -151,7 +151,7 @@ class Module {
 class Solution {
 
     private static final Scanner scanner = new Scanner(System.in);
-    private static final List<Module> modules = new ArrayList<>();
+    protected static List<Module> modules = new ArrayList<>();
 
     public static void main(String[] args) {
         while (true) {
@@ -299,7 +299,7 @@ class Solution {
         return input;
     }
 
-    private static Module findModuleByCode(int moduleCode) {
+    static Module findModuleByCode(int moduleCode) {
         for (Module module : modules) {
             if (moduleCode == module.getModuleCode()) {
                 return module;
@@ -308,12 +308,15 @@ class Solution {
         return null;
     }
 
-    private static Student findStudentById(Module module, int studentId) {
+    public static Student findStudentById(Module module, int studentId) {
         for (Student student : module.getStudents()) {
             if (studentId == student.getStudentId()) {
                 return student;
             }
         }
         return null;
+    }
+
+    public static void setModules(List<Module> modules) {
     }
 }
